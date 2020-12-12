@@ -5,18 +5,17 @@ import java.util.Set;
 
 class SingleNumber {
   public static int findSingleNumber(int[] arr) {
-    Map<Integer,Integer> numSet = new HashMap<>();
-    for (int i =0; i< arr.length; i++){
-      numSet.put(arr[i],numSet.getOrDefault(arr[i],0)+1);
+    Set<Integer> numSet = new HashSet<>();
+
+    for (int i=0; i< arr.length; i++){
+      if(!numSet.contains(arr[i])){
+        numSet.add(arr[i]);
+      }else{
+        numSet.remove(arr[i]);
+      }
     }
+    return numSet.stream().findFirst().get();
 
-
-
-    return numSet.entrySet().stream()
-        .filter(entry->entry.getValue()==1)
-        .findFirst()
-        .get()
-        .getKey();
   }
 
   public static void main( String args[] ) {
