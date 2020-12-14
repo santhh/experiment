@@ -1,7 +1,7 @@
 import java.util.*;
 
 class ConnectRopes {
-
+// o(nlogn) 0(n)
   public static int minimumCostToConnectRopes(int[] ropeLengths) {
     PriorityQueue<Integer> minHeap = new PriorityQueue<>();
     int result =0;
