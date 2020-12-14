@@ -4,7 +4,7 @@ class KthSmallestNumber {
 
   public static int findKthSmallestNumber(int[] nums, int k) {
     // min heap
-    PriorityQueue<Integer> numQ = new PriorityQueue<>();
+    PriorityQueue<Integer> numQ = new PriorityQueue<>(Collections.reverseOrder());
     for (int i =0; i< nums.length; i++){
       numQ.offer(nums[i]);
     }
