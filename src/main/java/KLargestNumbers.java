@@ -14,13 +14,13 @@ class KLargestNumbers {
   //  return res;
   // }
   public static List<Integer> findKLargestNumbers(int[] nums, int k) {
-    PriorityQueue<Integer> numQ = new PriorityQueue<>();
+    PriorityQueue<Integer> numQ = new PriorityQueue<>(Collections.reverseOrder());
     for (int i =0; i< k; i++){
       numQ.offer(nums[i]);
     }
 
     for (int i =k ; i<nums.length; i++){
-      if(nums[i]>numQ.peek()){
+      if(nums[i]<numQ.peek()){
         numQ.offer(nums[i]);
         numQ.poll();
       }
