@@ -1,21 +1,10 @@
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
-
 class SingleNumber {
   public static int findSingleNumber(int[] arr) {
-    Set<Integer> numSet = new HashSet<>();
-
-    for (int i=0; i< arr.length; i++){
-      if(!numSet.contains(arr[i])){
-        numSet.add(arr[i]);
-      }else{
-        numSet.remove(arr[i]);
-      }
+    int num = 0;
+    for (int i=0; i < arr.length; i++) {
+      num = num ^ arr[i];
     }
-    return numSet.stream().findFirst().get();
-
+    return num;
   }
 
   public static void main( String args[] ) {
