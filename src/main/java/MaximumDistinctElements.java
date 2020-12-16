@@ -35,7 +35,7 @@ class MaximumDistinctElements {
   }
 
   public static void main(String[] args) {
-    int result = MaximumDistinctElements.findMaximumDistinctElements(new int[] { 7, 3, 5, 8, 5, 3, 3 }, 2);
+    int result = MaximumDistinctElements.findMaximumDistinctElements(new int[] { 5, 5, 4}, 1);
     System.out.println("Maximum distinct numbers after removing K numbers: " + result);
 
     result = MaximumDistinctElements.findMaximumDistinctElements(new int[] { 3, 5, 12, 11, 12 }, 3);
