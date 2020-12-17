@@ -17,6 +17,9 @@ public class CPUTasks {
      while (index < tasks.length && tasks[index].qtime <= currentTime) {
        minHeap.offer(tasks[index++]);
      }
+     if(minHeap.isEmpty()){
+       currentTime = tasks[index].qtime;
+     }
      while (!minHeap.isEmpty()) {
        Task current = minHeap.poll();
        currentTime += current.exectime;
@@ -30,7 +33,7 @@ public class CPUTasks {
 
 
   public static void main(String args[]) {
-    Task t1 = new Task("id1", 0, 10);
+    Task t1 = new Task("id1", 2, 10);
     Task t2 = new Task("id2", 3, 7);
     Task t3 = new Task("id3", 6, 3);
     Task [] tasks = new Task[]{t1,t2,t3};
