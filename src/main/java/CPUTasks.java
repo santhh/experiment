@@ -8,18 +8,7 @@ public class CPUTask {
 
   PriorityQueue<Task> maxHeap;
 
-  public CPUTask(List<Task> tasks) {
-    maxHeap = new PriorityQueue<>(new TaskComparator());
-    for (Task task : tasks) {
-      maxHeap.offer(task);
-    }
-
-  }
-  public  List<String> printTaskId(){
-    List<String> result = new ArrayList<>();
-    while (!maxHeap.isEmpty()){
-      result.add(maxHeap.poll().id);
-    }
+ 
     return result;
   }
   public static void main(String args[]){
@@ -42,14 +31,6 @@ public class CPUTask {
       this.qtime = qtime;
       this.exectime = exectime;
     }
-  }
-
-  class TaskComparator implements Comparator<Task> {
-    @Override
-    public int compare(Task o1, Task o2) {
-      return o1.exectime - o2.exectime;
-    }
-
   }
 
 
