@@ -32,7 +32,7 @@ public class CatalanNumber2 {
 
   public static void main (String args[]){
     int [] arr1 = { 20, 10, 30 };
-    int []arr2 = { 1, 2, 3, 4, 5 };
+    int []arr2 = { 1, 2, 3, 4};
     System.out.println(totalBST(arr1));
     System.out.println(totalBST(arr2));
   }
