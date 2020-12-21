@@ -8,6 +8,8 @@ RearrangeStringKDistanceApart.java
  RearrangeStringKDistanceApart
 MaximumDistinctElements.java
  MaximumDistinctElements
+PrintDirectory.java
+ PrintDirectory
 KClosestElements.java
  Entry
  KClosestElements
@@ -20,6 +22,9 @@ KClosestPointToOrigin.java
  Point
 SearchRotateArray.java
  SearchRotatedArray
+MergeKSortedLists.java
+ ListNode
+ MergeKSortedLists
 SumOfElements.java
  SumOfElements
 KthSmallestNumber.java
@@ -38,6 +43,8 @@ SingleNumber.java
  SingleNumber
 TopKFrequentNumber.java
  TopKFrequentNumbers
+LargestPair.java
+ LargestPairs
 CPUTasks.java
  CPUTasks
  Task
@@ -45,6 +52,12 @@ FrequencyStack.java
  FrequencyStack
  FrequencyStack$E
  FrequencyStack$EComparator
+KthSmallestInMSortedArrays.java
+ KthSmallestInMSortedArrays
+ Node
+Solution.java
+ Element
+ Solution
 SlidingWindowMedian.java
  SlidingWindowMedian
 ConnectRepos.java
