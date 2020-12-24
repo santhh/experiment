@@ -4,7 +4,6 @@ import java.util.Collection;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 import java.util.stream.IntStream;
@@ -77,7 +76,7 @@ public class MisrememberedItn {
       ImmutableList.Builder routeList = ImmutableList.builder();
       PriorityQueue<HeapEntry> minHeap = new PriorityQueue<>(Comparator.comparingInt(he->he.distance));
       cities.forEach(city->{
-          minHeap.offer(new HeapEntry(nameDistance(city,itn.get(0)),new City(city,0))));
+          minHeap.offer(new HeapEntry(nameDistance(city,itn.get(0)),new City(city,0)));
       });
       while (!minHeap.isEmpty()){
           HeapEntry currntState  = minHeap.poll();
