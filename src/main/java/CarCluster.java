@@ -8,6 +8,7 @@ import java.util.PriorityQueue;
 import java.util.TreeMap;
 
 public class CarCluster {
+  static int time =0;
   public static int getClusterSize(List<Integer> speedList){
       int clusterSize =0;
 
@@ -26,7 +27,7 @@ public class CarCluster {
     LinkedList<Integer> carLink = new LinkedList<>();
     for (int i =speedList.size()-1; i>0; i--){
       if(speedList.get(i)<=speedList.get(i-1)){
-        queue.offer(Map.entry(i-1, overLapTime(i,speedList.get(i),i-1,speedList.get(i-1))));
+        queue.offer(Map.entry(overLapTime(i,speedList.get(i),i-1,speedList.get(i-1)),i-1));
         carLink.add(i-1);
         speedList.set(i-1,speedList.get(i));
       }
@@ -40,7 +41,6 @@ public class CarCluster {
 
   }
   public static int overLapTime(int d1, int s1, int d0, int s0){
-    int time =1;
     while (true){
       int newd1 = d1 + s1 * time;
       int newd0 = d0 + s0 * time;
