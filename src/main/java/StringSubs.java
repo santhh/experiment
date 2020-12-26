@@ -23,29 +23,40 @@ public class StringSubs {
   }
 
   public static String resolve (String value){
-    int startIndex = value.indexOf("%");
-    int endIndex = value.lastIndexOf("%");
-    if(startIndex >0 && endIndex >0){
-      String key = value.substring(startIndex+1, endIndex);
-      String replacevalue = value.substring(0,startIndex);
-      return replacevalue.concat(replaceMap.get(key));
+
+    StringBuilder sb = new StringBuilder();
+    StringTokenizer st = new StringTokenizer(value, "%");
+
+      while(st.hasMoreTokens()){
+        value = st.nextToken();
+        if(replaceMap.containsKey(value)){
+          sb.append(replaceMap.get(value));
+        }else{
+          sb.append(value);
+        }
+
+      }
+
+    return sb.toString();
     }
 
-    return value;
-  }
   public static void main (String args[]){
 
     replaceMap.putAll(
         Map.ofEntries(
             Map.entry("USER","root"),
             Map.entry("HOME","usr/local/home/%USER%"),
-            Map.entry("DATE", "2020-12-01")
+            Map.entry("DATE", "%HOME%/2020-12-01")
         )
     );
 
     for (Map.Entry<String,String> entity: replaceMap.entrySet()) {
-      String value = resolve(entity.getValue());
-      entity.setValue(value);
+      String value = entity.getValue();
+      while (value.indexOf("%")>=0) {
+        value = resolve(entity.getValue());
+        entity.setValue(value);
+      }
+
     }
     System.out.println(stringSub("%HOME%/data/file_%DATE%.txt"));
     // usr/local/home/root/data/file_2020-12-01.txt
