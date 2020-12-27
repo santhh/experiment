@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 class ArrayBasic {
 
@@ -67,6 +69,28 @@ class ArrayBasic {
     return nums[start];
 
   }
+
+  public static List<Integer> findSortedIntersection(int [] nums1, int [] nums2){
+    List<Integer> list = new ArrayList<>();
+    Arrays.sort(nums1);
+    Arrays.sort(nums2);
+    int i =0;
+    int j =0;
+    while (i< nums1.length && j< nums2.length){
+      if(nums1[i] == nums2[j]){
+        list.add(nums1[i]);
+        i++; j++;
+      }
+      else if (nums1[i] < nums2[j]) {
+        i++;
+      } else if (nums1[i] > nums2 [j]){
+        j++;
+      }
+    }
+    return list;
+
+
+  }
   public static void main (String args[]){
    int[] nums =  new int[]{3,2,2,3}; // remove elemennt from a list
     int res =  removeElement(nums,3);
@@ -89,7 +113,7 @@ class ArrayBasic {
     System.out.print(searchElement(nums, 3));
     System.out.println();
     System.out.println(binarySearch(nums, 1));
-
+    System.out.println(findSortedIntersection(new int[]{4,9,5}, new int[] {4,8,4,9,9}).toString());
 
   }
 }
