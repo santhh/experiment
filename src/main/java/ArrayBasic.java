@@ -50,14 +50,29 @@ class ArrayBasic {
     return -1;
   }
 
+  public static int findValueCount(int [] nums, int index, int val){
+    int rightIndex = index;
+    int leftIndex = index-1;
+    int count =0;
+    while (rightIndex < nums.length && nums[rightIndex] ==val ){
+      count ++;
+      rightIndex++;
+    }
+    while (leftIndex>=0 && nums[leftIndex] ==val){
+      count++;
+      leftIndex --;
+    }
+    return count;
+  }
   public static int binarySearch (int [] nums, int element){
     Arrays.sort(nums);
     int start =0;
-    int end = nums.length-1;
+    int end = nums.length;
     while (start<end){
       int mid = start + (end-start)/2;
       if(nums[mid] == element){
-        return nums[mid];
+        //return nums[mid];
+        return mid;
       }else if(element > nums[mid]){
         start = mid +1;
       }else if(element < nums[mid]){
@@ -66,7 +81,8 @@ class ArrayBasic {
 
     }
     // return closest to element
-    return nums[start];
+   // return nums[start];
+    return  -1;
 
   }
 
@@ -114,6 +130,10 @@ class ArrayBasic {
     System.out.println();
     System.out.println(binarySearch(nums, 1));
     System.out.println(findSortedIntersection(new int[]{4,9,5}, new int[] {4,8,4,9,9}).toString());
+    int index =  binarySearch(nums, 4);
+    if (index >=0) {
+      System.out.println(findValueCount(nums, index, 4));
+    }
 
   }
 }
