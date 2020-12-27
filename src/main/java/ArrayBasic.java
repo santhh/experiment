@@ -67,8 +67,8 @@ class ArrayBasic {
   public static int binarySearch (int [] nums, int element){
     Arrays.sort(nums);
     int start =0;
-    int end = nums.length;
-    while (start<end){
+    int end = nums.length-1;
+    while (start<=end){
       int mid = start + (end-start)/2;
       if(nums[mid] == element){
         //return nums[mid];
