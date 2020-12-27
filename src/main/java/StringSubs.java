@@ -22,7 +22,7 @@ public class StringSubs {
     return sb.toString();
   }
 
-  public static String resolve (String value){
+  public static String register (String value){
 
     StringBuilder sb = new StringBuilder();
     StringTokenizer st = new StringTokenizer(value, "%");
@@ -46,14 +46,18 @@ public class StringSubs {
         Map.ofEntries(
             Map.entry("USER","root"),
             Map.entry("HOME","usr/local/home/%USER%"),
-            Map.entry("DATE", "%HOME%/2020-12-01")
+            Map.entry("DATE", "2020-12-01")
         )
     );
 
     for (Map.Entry<String,String> entity: replaceMap.entrySet()) {
       String value = entity.getValue();
+      String key = entity.getKey();
       while (value.indexOf("%")>=0) {
-        value = resolve(entity.getValue());
+        value = register(entity.getValue());
+        if(value.indexOf(key)>=0){
+          break;
+        }
         entity.setValue(value);
       }
 
