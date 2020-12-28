@@ -28,7 +28,7 @@ public class RateLimit {
 
     RateLimit r = new RateLimit(5L, "f1");
 
-    while (counter.get()<=12){
+    while (counter.get()<=18){
       counter.incrementAndGet();
       System.out.println(r.apply());
     }
