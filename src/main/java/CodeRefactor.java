@@ -26,8 +26,7 @@ public class CodeRefactor {
       if( index < input.size() && i == input.get(index).start){
         //num -> start
         sb.append(input.get(index).after);
-        i +=  input.get(index).before.length();
-        index ++;
+        i +=  input.get(index++).before.length();
       }else {
         sb.append(s.charAt(i++));
       }
