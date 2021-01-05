@@ -18,6 +18,8 @@ class Replacement {
 
 public class CodeRefactor {
 
+
+
   public static String refactor(List<Replacement> input, String s){
     StringBuilder sb = new StringBuilder();
     int index=0;
