@@ -1,10 +1,8 @@
 import java.util.Comparator;
-import java.util.Deque;
 import java.util.HashSet;
 import java.util.PriorityQueue;
 import java.util.Set;
-import java.util.TreeMap;
-import java.util.TreeSet;
+
 
 public class HighWaterMark {
   int hw;
