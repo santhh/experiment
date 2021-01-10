@@ -1,9 +1,9 @@
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Queue;
+import java.util.Stack;
 
 class TNode {
   public int val;
@@ -44,13 +44,13 @@ public class MaxDepth {
       return Collections.max(res)+1;
     }
   }
-  public static void recurse(TNode current, List<List<Integer>> result, int level){
+  public static void bfsRecurse(TNode current, List<List<Integer>> result, int level){
     if(current==null) return;
     if(result.size()==level) result.add(new ArrayList<>());
     List<Integer> list = result.get(level);
     list.add(current.val);
     for (TNode n: current.children){
-      recurse(n,result,level+1);
+      bfsRecurse(n,result,level+1);
     }
 
 
@@ -59,7 +59,7 @@ public class MaxDepth {
   public static List<List<Integer>> BFSRecurse(TNode root){
 
     List<List<Integer>> result = new ArrayList<>();
-    recurse(root, result, 0);
+    bfsRecurse(root, result, 0);
     return result;
 
   }
@@ -79,11 +79,50 @@ public class MaxDepth {
     return result;
   }
 
-  public static void dfsPreorder(TNode root ){
+   public static void dfsPostorder(TNode root){
+     if (root ==null) return;
+     Stack<TNode> queue = new Stack<>();
+     queue.push(root);
+     while (!queue.isEmpty()){
+       TNode current = queue.pop();
+       result.add(current.val);
+       for (TNode n : current.children){
+          queue.push(n);
+       }
+
+     }
+     Collections.reverse(result);
+
+   }
+
+  public static void dfsPostorderRecurse(TNode root){
+    if (root ==null) return;
+    for (TNode n : root.children){
+      dfsPostorderRecurse(n);
+    }
+    result.add(root.val);
+  }
+
+  public static void dfsPreorderRecurse(TNode root ){
     if(root ==null) return;
     result.add(root.val);
     for (TNode n : root.children){
-      dfsPreorder(n);
+      dfsPreorderRecurse(n);
+    }
+  }
+  public static void dfsPreOrder(TNode root){
+    if(root == null) return;
+    Stack<TNode> queue = new Stack<>();
+    queue.push(root);
+    while(!queue.isEmpty()){
+      TNode current = queue.pop();
+      result.add(current.val);
+      Collections.reverse(current.children);
+      for (TNode n : current.children){
+        queue.push(n);
+      }
+
+
     }
 
   }
@@ -95,10 +134,21 @@ public class MaxDepth {
     root.addChild(new TNode(4));
     root.getChild(0).addChild(new TNode(5));
     root.getChild(0).addChild(new TNode(6));
-    System.out.println(maxDepth(root));
-    System.out.println(BFS(root));
-    dfsPreorder(root);
-    System.out.println("PreOrder: "+result);
+    // System.out.println(maxDepth(root));
+    // System.out.println("BFS Itr: "+BFS(root));
+    // System.out.println("BFS Recurse: "+BFSRecurse(root));
+    // dfsPreorderRecurse(root);
+    // System.out.println("PreOrder Recurse: "+result);
+    // result.clear();
+    // dfsPreOrder(root);
+    // System.out.println("PreOrder Itr: "+result);
+    // result.clear();
+    dfsPostorderRecurse(root);
+    System.out.println("Post Order Recurse: "+result);
+    result.clear();
+    dfsPostorder(root);
+     System.out.println("Post Order Itr: "+result);
+
 
 
 
