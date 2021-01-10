@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,7 +19,8 @@ static List<String> result = new ArrayList<>();
 
 public static void BFSRecurse(N root){
     if (root == null) return ;
-    result.add(root.name);
+    //result.add(root.name);
+    System.out.println(root.name);
     for (N child : root.child){
       BFSRecurse(child);
     }
@@ -28,7 +30,7 @@ public static void BFSRecurse(N root){
     List<String> files = new ArrayList<>();
     files.addAll(Arrays.asList("tsconfig.json", "index.html", "images/image.png",
         "app/tests/components/header","app/services", "app/components/header"));
-    //files.addAll(Arrays.asList("a/b", "a/c", "a/b/d"));
+    Collections.sort(files);
       N root = new N("");
 
       files.forEach(file->{
@@ -56,7 +58,7 @@ public static void BFSRecurse(N root){
       });
 
       BFSRecurse(root);
-      System.out.println(result);
+      //System.out.println(result);
 
 
   }
