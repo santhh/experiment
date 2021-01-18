@@ -31,6 +31,6 @@ public class GrepContextP {
     printMatches(
         asList("organize", "it", "and", "make", "it", "accessible", "and", "useful"),
         "it"::equals,
-        /*contextRequested=*/ 2);
+        /*contextRequested=*/ 1);
   }
 }
