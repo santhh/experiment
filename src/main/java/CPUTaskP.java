@@ -20,7 +20,6 @@ class CPUTask {
 
 public class CPUTaskP {
 
-
   public static List<String> processTasks(List<CPUTask> tasks ){
     List<String> result = new ArrayList<>();
     tasks.sort(Comparator.comparingInt(t->t.qTime));
@@ -29,9 +28,12 @@ public class CPUTaskP {
     int index =0;
     while(result.size()!=tasks.size()){
       while (index < tasks.size() && tasks.get(index).qTime<=currentTime){
-        CPUTask task = tasks.get(index);
+        CPUTask task = tasks.get(index++);
         minHeap.add(task);
-        index++;
+      }
+      if(minHeap.isEmpty()){
+        index ++;
+        continue;
       }
       while (!minHeap.isEmpty()){
           CPUTask current = minHeap.poll();
