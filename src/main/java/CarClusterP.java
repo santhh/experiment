@@ -55,7 +55,11 @@ static AtomicInteger time = new AtomicInteger(0);
         inputList.set(i-1,inputList.get(i));
       }
     }
-    return carLinklList;
+    while (!minHeap.isEmpty()){
+      Map.Entry entry = minHeap.poll();
+      System.out.println(entry.getKey()+" " + entry.getValue());
+    }
+    return  carLinklList;
 
   }
 
