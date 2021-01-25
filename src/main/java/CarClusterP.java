@@ -64,15 +64,14 @@ static AtomicInteger time = new AtomicInteger(0);
   }
 
   public static int overtakeTime(int prevD, int prevS, int currD,int currS){
-    while (true){
-      int t = time.getAndIncrement();
-      int newPrevD =  prevD + prevS * t;
-      int newCurrD =  currD + currS * t;
-      if(newPrevD>=newCurrD){
-        break;
-      }
+
+    int currTime = time.get();
+    // d = s * t
+    while ((prevD+currTime*prevS)<(currD+currTime*currS)){
+      currTime = time.incrementAndGet();
     }
-    return time.get();
+
+    return currTime;
   }
   public static void main (String args[]){
     ImmutableList<Integer> speedList1 = ImmutableList.of(2,4,1,3);
