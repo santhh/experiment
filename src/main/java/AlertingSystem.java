@@ -67,7 +67,7 @@ public class AlertingSystem {
      double [] rate = new double[]
         {5, 10, 7, 15, 0, 60, 55, 60, 60, 60, 0, 5, 5};
      System.out.println(as.hasAlertQ1(6,6, 55, rate));
-     System.out.println(as.hasAlertQ2(rate));
-     System.out.println(as.hasAlertQ3(rate));
+     // System.out.println(as.hasAlertQ2(rate));
+     // System.out.println(as.hasAlertQ3(rate));
   }
 }
