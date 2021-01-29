@@ -18,8 +18,8 @@ public class AlertingSystemP1 {
   public static boolean isHealthy(int threshold){
     int maxArea =0;
     for (int i =0; i<rates.length; i++){
-      int minHeight =  Integer.MAX_VALUE;
-      for (int j = i; j<rates.length; j++ ){
+      int minHeight =  rates[i].intValue();
+      for (int j = i +1; j<rates.length; j++ ){
         minHeight = Math.min(minHeight,rates[j].intValue());
         int area = (j -i +1) *  minHeight;
         maxArea = Math.max(area, maxArea);
