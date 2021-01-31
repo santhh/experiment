@@ -29,7 +29,7 @@ public class MaximizeArrayRecurseDP {
 
   public static void main (String args[]){
     int [] cardPoints = new int[]{1,2,3,4,5,6,1};
-    int [] multiplier = new int[]{1,1,1};
+    int [] multiplier = new int[]{2,3,4};
     int k = 3;
     int n = cardPoints.length ;
     new MaximizeArrayRecurseDP(n);
