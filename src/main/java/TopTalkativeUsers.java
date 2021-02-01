@@ -35,8 +35,6 @@ public class TopTalkativeUsers {
       count++;
     }
 
-
-
     for (Map.Entry<String, Integer> entry : userWordCountMap.entrySet()){
       if(!minHeap.isEmpty() && minHeap.peek().getValue() < entry.getValue()){
         minHeap.poll();
