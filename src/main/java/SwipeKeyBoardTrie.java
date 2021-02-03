@@ -39,6 +39,7 @@ class TrieNode {
 }
 public class SwipeKeyBoardTrie {
   static StringBuilder res = new StringBuilder();
+  static List<String> match = new ArrayList<>();
   public static void main(String args[]) {
     ImmutableList<String> words = ImmutableList.of("apple", "bah", "google", "boba", "tea");
     String path = "ghjkoijhghjklkjhgfde";
@@ -50,11 +51,12 @@ public class SwipeKeyBoardTrie {
     //System.out.println(res.toString().trim());
     String res = findWord(root,path);
     System.out.println(res);
+    System.out.println(match);
   }
   public static  String findWord (TrieNode node, String path){
     StringBuilder sb = new StringBuilder();
     TrieNode current = node;
-     sb.append(node.c);
+    sb.append(node.c);
     for (TrieNode child : current.child){
       int pos = find(path, child.c);
       if(pos!=-1){
@@ -62,6 +64,7 @@ public class SwipeKeyBoardTrie {
       }
     }
 
+    match.add(sb.toString());
     return sb.toString();
   }
 
@@ -86,7 +89,5 @@ public class SwipeKeyBoardTrie {
       DFS(child);
     }
   }
-
-
 
 }
