@@ -1,13 +1,12 @@
 public class DecimalToBinary {
 
   public static void main (String args[]){
-    int N =125;
+    int N =5;
     System.out.println(Integer.toBinaryString(5));
-    // custom
-
+    // custom decimal - > binary
     int base =2;
     StringBuilder sb = new StringBuilder();
-    while (N!=0){
+    while (N>0){
       int reminder = N % base;
       sb.append(reminder);
       N= N/base;
@@ -26,6 +25,19 @@ public class DecimalToBinary {
     }
 
     System.out.println(maxOne);
+
+    // convert binary -> decimal
+    int binary = Integer.parseInt(sb.toString());
+    int decimal =0;
+    int b = 1;
+    while (binary>0){
+      int reminder = binary % 10;
+      binary = binary /10;
+      decimal += reminder * b;
+      b *=  2;
+
+    }
+    System.out.println(decimal);
 
   }
 }
