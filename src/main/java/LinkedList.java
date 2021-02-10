@@ -52,7 +52,7 @@ public class LinkedList {
   public static MyNode reverseBetween(MyNode head , int m, int n){
     MyNode dummy = new MyNode(0);
     dummy.next = head;
-    MyNode current = head;
+    MyNode current = dummy;
     MyNode prev = null;
     for (int i =0; i<m;i++){
       prev = current;
