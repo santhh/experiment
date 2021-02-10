@@ -72,6 +72,19 @@ public class LinkedList {
    return dummy.next;
 
   }
+
+  public boolean detectCycle(MyNode head){
+    MyNode fast = head;
+    MyNode slow = head;
+    while (fast!=null && fast.next!=null){
+      fast = fast.next.next;
+      slow = slow.next;
+      if(fast ==slow) return  true;
+    }
+    return false;
+  }
+
+
   public static void main (String args[]){
     MyNode head = null;
     head = insertTail (head, 2);
