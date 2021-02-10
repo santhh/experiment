@@ -83,6 +83,47 @@ public class LinkedList {
     }
     return false;
   }
+  // merge sort
+  public static MyNode sort(MyNode head){
+      if (head == null || head.next == null) return  head;
+      MyNode fast = head;
+      MyNode slow = head;
+      MyNode prev =null;
+      while (fast !=null && fast.next!=null){
+        prev = slow;
+        slow = slow.next;
+        fast = fast.next.next;
+      }
+      prev.next = null;
+
+      MyNode l1 = sort(slow);
+      MyNode l2 = sort(head);
+      return merge (l1,l2);
+
+  }
+
+  public static MyNode merge(MyNode l1, MyNode l2){
+    MyNode l = new MyNode(0);
+    MyNode p = l;
+    while (l1!=null || l2!=null){
+      if(l1.value<l2.value){
+        p.next = l1;
+        l1 = l1.next;
+      } else {
+        p.next = l2;
+        l2 = l2.next;
+      }
+      p = p.next;
+    }
+    if (l1!=null){
+     p.next = l1;
+    }
+
+    if (l2!=null){
+      p.next =l2;
+    }
+    return l.next;
+  }
 
 
   public static void main (String args[]){
@@ -92,16 +133,17 @@ public class LinkedList {
     head = insertTail (head, 5);
     //print(head);
     //System.out.println();
-    MyNode head1 = null;
-    head1 = insertHead (head1, 2);
-    head1 = insertHead (head1, 4);
-    head1 = insertHead (head1, 5);
-    head1 = insertHead (head1, 6);
-    // print(head1);
+    // MyNode head1 = null;
+    // head1 = insertHead (head1, 2);
+    // head1 = insertHead (head1, 4);
+    // head1 = insertHead (head1, 5);
+    // head1 = insertHead (head1, 6);
+    //  print(head1);
     // System.out.println();
     // print(reverse(head));
     // System.out.println();
-    print(reverseBetween(head1,1,2));
+   // print(reverseBetween(head1,1,2));
+    print(sort(head));
 
   }
 }
