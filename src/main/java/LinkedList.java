@@ -64,6 +64,23 @@ public class LinkedList {
     return prev;
   }
 
+  public static MyNode sortList(MyNode head){
+    if (head==null || head.next==null) return head;
+    MyNode fast = head;
+    MyNode slow = head;
+    MyNode prev = null;
+    while  (fast!=null && fast.next!=null){
+      prev = slow;
+      fast = fast.next.next;
+      slow = slow.next;
+    }
+    prev.next =null;
+    MyNode l1 = sortList(head);
+    MyNode l2 = sortList(slow);
+    return mergeTwoList(l1,l2);
+
+  }
+
   public static MyNode mergeTwoList(MyNode l1, MyNode l2){
     MyNode dummy = new MyNode(-1);
     MyNode prev =dummy;
