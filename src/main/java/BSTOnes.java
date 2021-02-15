@@ -57,6 +57,19 @@ public class BSTOnes {
     maxNode(root.right);
     return maxValue;
 
+  }
+  static int longestPath =0;
+  public static int dfs (Node root){
+    if(root==null) return 0;
+    int left = dfs(root.left);
+    int right = dfs(root.right);
+    longestPath = Math.max(longestPath,left+right+1);
+    return 1+ Math.max(left,right);
+  }
+  public static int diameterTree(Node root){
+    if(root==null) return 0;
+    dfs(root);
+    return longestPath-1;
 
   }
 
@@ -69,6 +82,28 @@ public class BSTOnes {
     return 1+Math.max(findDepth(root.left),findDepth(root.right));
   }
 
+  public static void preOrder(Node root){
+    if (root==null) return;
+    System.out.print(" "+root.data);
+    preOrder(root.left);
+    preOrder(root.right);
+  }
+  public static void inOrder(Node root){
+    if (root==null) return;
+    inOrder(root.left);
+    System.out.print(" "+root.data);
+    inOrder(root.right);
+
+  }
+  public static void postOrder(Node root){
+    if (root==null) return;
+    postOrder(root.right);
+    postOrder(root.left);
+    System.out.print(" "+root.data);
+
+  }
+
+
   public static void main (String args[]){
     Node root=null;
     root=insert(root,3);
@@ -78,10 +113,17 @@ public class BSTOnes {
     root=insert(root,4);
     root=insert(root,6);
     root=insert(root,7);
-    System.out.println(calcHeight(root));
-    System.out.println(nodeSum(root));
-    System.out.println(maxNode(root));
-    System.out.println(findHeight(root));
-    System.out.println(findDepth(root));
+    // System.out.println(calcHeight(root));
+    // System.out.println(nodeSum(root));
+    // System.out.println(maxNode(root));
+    // System.out.println(findHeight(root));
+    // System.out.println(findDepth(root));
+    System.out.println(diameterTree(root));
+     /*preOrder(root);
+     System.out.println();
+     inOrder(root);
+    System.out.println();
+    postOrder(root);*/
+
   }
 }
