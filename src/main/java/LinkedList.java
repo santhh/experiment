@@ -111,11 +111,35 @@ public class LinkedList {
     return false;
   }
 
+  public static MyNode removeDuplicates(MyNode head){
+    if(head==null) return head;
+    MyNode newHead = new MyNode(-1);
+    newHead.next = head;
+    MyNode prev =head;
+
+    while (head.next!=null){
+      MyNode next = head.next;
+      if(prev.value != next.value){
+        head = next;
+        prev = head;
+
+      }else{
+        prev.next = next.next;
+
+      }
+
+    }
+
+    return newHead.next;
+
+
+  }
+
   public static void main (String args[]){
-      MyNode head =null;
-    head = insertTail(head, 2);
-    head = insertTail(head, 4);
-    head = insertTail(head, 6);
+    //   MyNode head =null;
+    // head = insertTail(head, 2);
+    // head = insertTail(head, 4);
+    // head = insertTail(head, 6);
    // head = delete(head, 4);
    //  head = rotate(head);
    //  while (head!=null){
@@ -123,20 +147,39 @@ public class LinkedList {
    //    head = head.next;
    //  }
    //  System.out.println();
-    MyNode head1 =null;
-    head1 = insertTail(head1, 1);
-    head1 = insertTail(head1, 3);
-    head1 = insertTail(head1, 5);
-   //  head1 = rotate(head1);
+   //  MyNode head1 =null;
+   //  head1 = insertTail(head1, 1);
+   //  head1 = insertTail(head1, 3);
+   //  head1 = insertTail(head1, 5);
+   // //  head1 = rotate(head1);
    //  while (head1!=null){
    //    System.out.print(head1.value+" ");
    //    head1 = head1.next;
    //  }
-    System.out.println();
-    MyNode newHead = mergeTwoList(head, head1);
-    while (newHead!=null){
-      System.out.println(newHead.value);
-      newHead = newHead.next;
+   //  System.out.println();
+   //  MyNode newHead = mergeTwoList(head, head1);
+   //  while (newHead!=null){
+   //    System.out.println(newHead.value);
+   //    newHead = newHead.next;
+   //  }
+
+    MyNode head2 = null;
+    head2 = insertTail(head2, 1);
+    head2 = insertTail(head2, 2);
+    head2 = insertTail(head2, 2);
+    head2 = insertTail(head2, 3);
+    head2 = insertTail(head2, 3);
+    head2 = insertTail(head2, 4);
+    MyNode temp = head2;
+     while (temp!=null){
+       System.out.print(temp.value +" ");
+       temp = temp.next;
+     }
+    head2 = removeDuplicates(head2);
+     System.out.println();
+    while (head2!=null){
+      System.out.print(head2.value +" ");
+      head2 = head2.next;
     }
 
 
