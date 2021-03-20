@@ -1,3 +1,4 @@
+import com.google.common.util.concurrent.AtomicDouble;
 import java.util.ArrayDeque;
 import java.util.Deque;
 /*
@@ -8,28 +9,33 @@ import java.util.Deque;
   https://g3doc.corp.google.com/company/teams/sre/hiring/interview-questions/
   L6-code-review/moving-average.md?cl=head
  */
-public class MAver {
-  int windowSize;
-  Deque<Integer> list;
-  double sum;
+public final class MAver {
+  private int windowSize;
+  private Deque<Integer> list;
+  private  AtomicDouble sum;
   public MAver(int windowSize){
     this.windowSize = windowSize;
     list = new ArrayDeque<>();
-    sum = 0.0;
+    sum = new AtomicDouble(0.0);
   }
-  public void add(int value){
+
+  public void addValue(final int value){
     if(list.size()==windowSize){
-      sum -= list.pollLast();
+      sum.set(sum.get() - value);
     }
     list.addFirst(value);
-    sum += value;
+    sum.set(sum.get() + value);
   }
-  public double get() {
-    return sum / windowSize;
+  public double getMovingAverage() {
+    return sum.get() / windowSize;
   }
 
   public static void main (String args[]){
     MAver mv = new MAver(3);
-
+     mv.addValue(1);
+    // mv.addValue(2);
+    // mv.addValue(90);
+    // mv.addValue(10);
+   System.out.println(mv.getMovingAverage());
   }
 }
