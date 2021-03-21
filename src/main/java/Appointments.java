@@ -16,12 +16,15 @@ class Appointment{
 }
 public class Appointments {
   public static void findConflicts(List<Appointment> appointments) {
-
-    for (int i =0; i< appointments.size()-1; i++){
-      if(appointments.get(i).end > appointments.get(i+1).start){
+    if(appointments.size()==0) return;
+    Appointment latest = appointments.get(0);
+    for (int i =1; i< appointments.size(); i++){
+      if(appointments.get(i).start < latest.end){
         appointments.get(i).hasConflict = true;
-        appointments.get(i+1).hasConflict = true;
-
+        latest.hasConflict = true;
+      }
+      if(appointments.get(i).end > latest.end){
+        latest = appointments.get(i);
       }
     }
   }
