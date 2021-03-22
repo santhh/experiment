@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.PriorityQueue;
+import java.util.Set;
+
 class Sequence {
   private int start;
   private int end;
@@ -46,12 +49,14 @@ class Sequence {
 class DenseArray {
 
   private List<Sequence> values;
-  PriorityQueue<Integer> minHeap;
+  private PriorityQueue<Integer> minHeap;
+  private Set<Integer> valueSet;
 
 
   public DenseArray(int start) {
     values = new ArrayList<Sequence>();
     minHeap = new PriorityQueue<>(Comparator.comparingInt(a->a));
+    valueSet = new HashSet<>();
 
 
   }
@@ -73,7 +78,11 @@ class DenseArray {
   }
 
   public void insert(int i) {
-      minHeap.add(i);
+
+     if(!valueSet.contains(i)) {
+       minHeap.add(i);
+       valueSet.add(i);
+     }
     boolean foundIt = false;
     for (Sequence s : values) {
       if (s.Contains(i)) {
@@ -140,7 +149,7 @@ public class Watermark {
 
   public int Calculate(int start) {
     int clock = start;
-    while (clockStream.test(++clock))
+    while (clockStream.test1(++clock))
       ;
     return clock-1;
   }
